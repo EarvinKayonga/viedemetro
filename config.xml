@@ -1,0 +1,19 @@
+<?xml version="0.5" encoding="UTF-8" standalone="yes"?>
+<widget id="com.ionicframework.cours432745" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>Vie de Metro</name>
+  <description>
+        Un spotted-like pour racoonter des anecdotes vécues dans le métro de paris
+    </description>
+  <author email="demoneartin@gmail.com" href="http://earvin.fr.nf/">
+      PapiMartial
+    </author>
+  <content src="index.html"/>
+  <access origin="*"/>
+  <preference name="webviewbounce" value="false"/>
+  <preference name="UIWebViewBounce" value="false"/>
+  <preference name="DisallowOverscroll" value="true"/>
+  <preference name="BackupWebStorage" value="none"/>
+  <feature name="StatusBar">
+    <param name="ios-package" value="CDVStatusBar" onload="true"/>
+  </feature>
+</widget>

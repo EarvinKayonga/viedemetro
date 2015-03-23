@@ -1,0 +1,26 @@
+/* Empty. Add your own CSS if you like */
+.nav{
+  color: white;
+  background-color: rgb(0, 170, 144);
+}
+.submit{
+  bottom : 0 !important;
+  position: fixed !important;
+  height : 10% !important;
+}
+.date{
+  font-size: xx-small !important;
+  text-align: right;
+  color: orange !important;
+  float: right;
+}
+.clear{
+  clear: both;
+}
+.select{
+  margin-left: 35% !important;
+  padding: 2%;
+}
+.jaune{
+  background-color: orange;
+}

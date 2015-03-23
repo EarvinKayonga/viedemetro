@@ -1,0 +1,25 @@
+  <ion-modal-view>
+  <ion-header-bar class="nav" >
+    <h1 class="title">L'Anecdote</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="close()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content >
+    <form name="anec" ng-submit="do(text,selectedItem)" ng-model="text"  style="height: 100%">
+      <div class="jaune">
+        <select class="select" ng-model="selectedItem">
+          <option ng-repeat="item in station" value="{{item.title}}">{{item.title}}</option>
+        </select>
+
+      </div>
+      <div class="list" >
+        <label class="item item-input">
+          <textarea name="anecdote" ng-model="text" rows="10" placeholder="Racontez" style="margin: 6%;"></textarea>
+        </label>
+
+        <button class="button button-block button-positive ion-chevron-up " type="submit"> Envoyer</button>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

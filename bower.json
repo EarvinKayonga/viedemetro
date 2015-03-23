@@ -1,0 +1,24 @@
+{
+  "name": "Cours",
+  "private": true,
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#1.0.0-rc.1"
+  },
+  "version": "0.1",
+  "authors": [
+    "EarvinKayonga <demoneartin@gmail.com>"
+  ],
+  "description": "divertissement",
+  "keywords": [
+    "divertissement"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "www/lib",
+    "test",
+    "tests"
+  ]
+}
