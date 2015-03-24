@@ -10,10 +10,51 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   $ionicPlatform.ready(function() {
     Parse.initialize("pWm8epqgF2aiTmPqM0qeGm1aPHF73wW5jCe1LXfC", "6ZkBvTc8jvqts6UVHIAPSFgYL8qtrugUCcF2A00f");
     $rootScope.stations = {};
-    $http.get('js/stations.json').success(function(data) {
+    $rootScope.reponse= [];
+
+    $rootScope.lieu = {};
+    $rootScope.ligne = [
+      { title: 'Ligne 1', id: 1 },
+      { title: 'Ligne 2', id: 2 },
+      { title: 'Ligne 3', id: 3 },
+      { title: 'Ligne 4', id: 4 },
+      { title: 'Ligne 5', id: 5 },
+      { title: 'Ligne 6', id: 6 }
+    ];
+    $rootScope.station= [
+      { title: 'Chatelet', id: 1 },
+      { title: 'Ligdzene 2', id: 2 },
+      { title: 'Ligdzedzne 3', id: 3 },
+      { title: 'Ligdzedzne 4', id: 4 },
+      { title: 'Ligdzezne 5', id: 5 },
+      { title: 'Ligdzezene 6', id: 6 }
+    ];
+    $rootScope.parse= function(){
+      var Object = Parse.Object.extend("anecdote");
+        var query = new Parse.Query(Object);
+        query.descending("createdAt");
+        query.find({
+          success : function(results){
+
+              for (var i = 0; i < results.length; i++){
+                $rootScope.reponse[i] = results[i];
+                $rootScope.reponse[i].date = {};
+                $rootScope.reponse[i].date = $rootScope.reponse[i].createdAt.toString().split(/\s+/);
+              }
+
+
+          },
+          error: function(error) {
+            alert('error');
+          }
+        });
+    }
+
+    $rootScope.parse();
+  /*  $http.get('js/stations.json').success(function(data) {
      $rootScope.stations = data;
 
-    });
+   });*/
 
 
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -22,7 +63,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
     if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
+     // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
   });

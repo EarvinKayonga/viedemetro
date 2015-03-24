@@ -2,27 +2,10 @@ angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout,$rootScope) {
   // Form data for the login modal
+
+
   $scope.loginData = {};
-  $rootScope.lieu = {};
-  $rootScope.reponse= [];
 
-
-  $rootScope.ligne = [
-    { title: 'Ligne 1', id: 1 },
-    { title: 'Ligne 2', id: 2 },
-    { title: 'Ligne 3', id: 3 },
-    { title: 'Ligne 4', id: 4 },
-    { title: 'Ligne 5', id: 5 },
-    { title: 'Ligne 6', id: 6 }
-  ];
-  $rootScope.station= [
-    { title: 'Chatelet', id: 1 },
-    { title: 'Ligdzene 2', id: 2 },
-    { title: 'Ligdzedzne 3', id: 3 },
-    { title: 'Ligdzedzne 4', id: 4 },
-    { title: 'Ligdzezne 5', id: 5 },
-    { title: 'Ligdzezene 6', id: 6 }
-  ];
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/input.html', {
@@ -76,26 +59,7 @@ angular.module('starter.controllers', [])
 
 
 
-  //Query a Parse.
-  var Object = Parse.Object.extend("anecdote");
-  var query = new Parse.Query(Object);
 
-  query.descending("createdAt");
-  query.find({
-    success : function(results){
-
-        for (var i = 0; i < results.length; i++){
-          $rootScope.reponse[i] = results[i];
-          $rootScope.reponse[i].date = {};
-          $rootScope.reponse[i].date = $rootScope.reponse[i].createdAt.toString().split(/\s+/);
-        }
-
-
-    },
-    error: function(error) {
-      alert('error');
-    }
-  });
 
   $scope.click= function(arg){
     $rootScope.lieu.station = arg;
