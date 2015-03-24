@@ -1,4 +1,12 @@
 /* Empty. Add your own CSS if you like */
+@font-face {
+    font-family: Font;
+    src: url(DKAmericanGrunge.ttf);
+}
+#menu{
+  color: white;
+  background-color: rgb(0, 170, 144);
+}
 .nav{
   color: white;
   background-color: rgb(0, 170, 144);
@@ -23,4 +31,14 @@
 }
 .jaune{
   background-color: orange;
+}
+.fin{
+  color: black !important;
+  text-align: center;
+  font-family: Font Verdana;
+  background-color: grey;
+  width: 80%;
+  font-size: 150%;
+  height: 40px;
+  margin: 0 auto;
 }

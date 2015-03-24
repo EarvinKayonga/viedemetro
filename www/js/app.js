@@ -19,7 +19,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       { title: 'Ligne 3', id: 3 },
       { title: 'Ligne 4', id: 4 },
       { title: 'Ligne 5', id: 5 },
-      { title: 'Ligne 6', id: 6 }
+      { title: 'Ligne 6', id: 6 },
+      { title: 'Ligne 7', id: 7 },
+      { title: 'Ligne 8', id: 8 },
+      { title: 'Ligne 9', id: 9 },
+      { title: 'Ligne 10', id: 10 },
+      { title: 'Ligne 11', id: 11 },
+      { title: 'Ligne 12', id: 12 },
+      { title: 'Ligne 13', id: 13 },
+      { title: 'Ligne 14', id: 14 }
     ];
     $rootScope.station= [
       { title: 'Chatelet', id: 1 },
@@ -51,10 +59,11 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
 
     $rootScope.parse();
-  /*  $http.get('js/stations.json').success(function(data) {
+    $http.get('js/stations.json').success(function(data) {
      $rootScope.stations = data;
+    });
 
-   });*/
+
 
 
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
