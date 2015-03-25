@@ -23,8 +23,6 @@ angular.module('starter.controllers', [])
       var anecdote = new Anecdote();
       anecdote.set("objectId", arg1);
       anecdote.set("point", arg2);
-
-
       anecdote.save(null, {
         success: function(anecdote) {
           anecdote.set("point", arg2-1 );
@@ -32,7 +30,6 @@ angular.module('starter.controllers', [])
         }
       });
       alert("A voté !");
-
     }
   };
 
@@ -59,27 +56,29 @@ angular.module('starter.controllers', [])
 
   // Perform the login action when the user submits the login form
   $scope.do = function(text, metro) {
+      if(text!=="" ){
       var Anecdote = Parse.Object.extend("anecdote");
       var anecdote = new Anecdote();
 
       anecdote.set("commentaires", text);
       anecdote.set("station", metro);
       anecdote.set("point", 1);
-      anecdote.set("user_id", "toto");
+      anecdote.set("user_id", "Earvin");
 
       anecdote.save(null, {
         success: function(anecdote) {
           // Execute any logic that should take place after the object is saved.
-          alert('New object created with objectId: ' + anecdote.id);
+          alert('C\'est envoyé !');
         },
         error: function(anecdote, error) {
           // Execute any logic that should take place if the save fails.
           // error is a Parse.Error with an error code and message.
-          alert('Failed to create new object, with error code: ' + error.message);
+          alert('Erreur: ' + error.message);
         }
       });
-
-
+    }else{
+      alert("Il manque un metro et/ou du texte");
+    }
     // Simulate a login delay. Remove this and replace with your login
     // code if using a login system
     $timeout(function() {
@@ -135,6 +134,7 @@ angular.module('starter.controllers', [])
   }
 })
 .controller('StationCtrl', function($scope,$rootScope,$state) {
+    
     $scope.click= function(arg){
     $rootScope.lieu.station = arg;
 
