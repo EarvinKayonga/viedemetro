@@ -2,11 +2,36 @@ angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout,$rootScope) {
   // Form data for the login modal
-  $rootScope.votes = function(arg,arg1){
+  $rootScope.votes = function(arg,arg1,arg2){
     if(arg==='up'){
+      var Anecdote = Parse.Object.extend("anecdote");
+      var anecdote = new Anecdote();
+      anecdote.set("objectId", arg1);
+      anecdote.set("point", arg2);
 
-      
+
+      anecdote.save(null, {
+        success: function(anecdote) {
+          anecdote.set("point", arg2+1 );
+          anecdote.save();
+        }
+      });
+      alert("A voté !");
+
     }else if(arg==='down'){
+      var Anecdote = Parse.Object.extend("anecdote");
+      var anecdote = new Anecdote();
+      anecdote.set("objectId", arg1);
+      anecdote.set("point", arg2);
+
+
+      anecdote.save(null, {
+        success: function(anecdote) {
+          anecdote.set("point", arg2-1 );
+          anecdote.save();
+        }
+      });
+      alert("A voté !");
 
     }
   };

@@ -10,8 +10,8 @@
       </div>
       <div class="item item-body">
         <p>
-          <a ng-click="votes('up',item.id)" class="subdued left ion-thumbsup">  Je valide</a>
-          <a ng-click="votes('down',item.id)" class="subdued left ion-thumbsdown"> Pas top </a>
+          <a ng-click="votes('up',item.id,item.attributes.point)" class="subdued left ion-thumbsup">  Je valide</a>
+          <a ng-click="votes('down',item.attributes.id)" class="subdued left ion-thumbsdown"> Pas top </a>
           <i style="float: right;">{{item.attributes.point}} points</i>
           <i class="clear"></i>
         </p>

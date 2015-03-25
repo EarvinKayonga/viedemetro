@@ -13,8 +13,8 @@
         <i class="date"><i style="color: red;">envoyé </i> <i style="color: blue;"> à {{item.date[4]}}  </i>, {{item.date[2]}} {{item.date[1]}} {{item.date[3]}}</i>
         <div class="clear"></div>
         <p>
-          <a ng-click="votes('up',item.id)" class="subdued left ion-thumbsup">  Je valide</a>
-          <a ng-click="votes('down',item.id)" class="subdued left ion-thumbsdown"> Pas top </a>
+          <a ng-click="votes('up',item.id,item.attributes.point)" class="subdued left ion-thumbsup">  Je valide</a>
+          <a ng-click="votes('down',item.id,itemattributes.points)" class="subdued left ion-thumbsdown"> Pas top </a>
           <i style="float: right;">{{item.attributes.point}} points</i>
           <i class="clear"></i>
         </p>
