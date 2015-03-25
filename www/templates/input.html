@@ -9,7 +9,7 @@
     <form name="anec" ng-submit="do(text,selectedItem)" ng-model="text"  style="height: 100%">
       <div class="jaune">
         <select class="select" ng-model="selectedItem" required>
-          <option ng-repeat="item in stations.features" value="{{item.properties.STATION}}">{{item.properties.STATION}}</option>
+          <option ng-repeat="item in stations.features | orderBy:'-properties.STATION'" value="{{item.properties.STATION }}">{{item.properties.STATION }}</option>
         </select>
 
       </div>

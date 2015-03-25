@@ -11,16 +11,20 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     Parse.initialize("pWm8epqgF2aiTmPqM0qeGm1aPHF73wW5jCe1LXfC", "6ZkBvTc8jvqts6UVHIAPSFgYL8qtrugUCcF2A00f");
     $rootScope.stations = {};
     $rootScope.reponse= [];
+    $rootScope.reponsehome= [];
+    $rootScope.reponsestation = [];
 
     $rootScope.lieu = {};
     $rootScope.ligne = [
       { title: 'Ligne 1', id: 1 },
       { title: 'Ligne 2', id: 2 },
       { title: 'Ligne 3', id: 3 },
+      { title: 'Ligne 3bis', id: 32 },
       { title: 'Ligne 4', id: 4 },
       { title: 'Ligne 5', id: 5 },
       { title: 'Ligne 6', id: 6 },
       { title: 'Ligne 7', id: 7 },
+      { title: 'Ligne 7bis', id: 72 },
       { title: 'Ligne 8', id: 8 },
       { title: 'Ligne 9', id: 9 },
       { title: 'Ligne 10', id: 10 },
@@ -37,19 +41,19 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       { title: 'Ligdzezne 5', id: 5 },
       { title: 'Ligdzezene 6', id: 6 }
     ];
+
     $rootScope.parse= function(){
       var Object = Parse.Object.extend("anecdote");
         var query = new Parse.Query(Object);
         query.descending("createdAt");
         query.find({
           success : function(results){
-
               for (var i = 0; i < results.length; i++){
-                $rootScope.reponse[i] = results[i];
-                $rootScope.reponse[i].date = {};
-                $rootScope.reponse[i].date = $rootScope.reponse[i].createdAt.toString().split(/\s+/);
+                $rootScope.reponsehome[i] = results[i];
+                $rootScope.reponsehome[i].date = {};
+                $rootScope.reponsehome[i].date = $rootScope.reponsehome[i].createdAt.toString().split(/\s+/);
               }
-
+              
 
           },
           error: function(error) {
@@ -66,10 +70,13 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
 
 
+
+
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+
     }
     if (window.StatusBar) {
      // org.apache.cordova.statusbar required

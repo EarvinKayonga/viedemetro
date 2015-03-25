@@ -2,7 +2,14 @@ angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout,$rootScope) {
   // Form data for the login modal
+  $rootScope.votes = function(arg,arg1){
+    if(arg==='up'){
 
+      
+    }else if(arg==='down'){
+
+    }
+  };
 
   $scope.loginData = {};
 
@@ -57,7 +64,10 @@ angular.module('starter.controllers', [])
 })
 .controller('HomeCtrl',function($http,$scope,$rootScope,$state,$ionicModal){
 
+
+
   $scope.click= function(arg){
+
     $scope.lieu.station = arg;
 
 
@@ -65,13 +75,15 @@ angular.module('starter.controllers', [])
     var Object = Parse.Object.extend("anecdote");
     var query = new Parse.Query(Object);
 
-    query.equalTo("station",$rootScope.lieu.station);
+
+    query.equalTo("station",arg);
     query.find({
       success : function(results){
-          
+
           for (var i = 0; i < results.length; i++){
-            $rootScope.reponse[i] = results[i];
+            $rootScope.reponsestation[i] = results[i];
           }
+        console.log($rootScope.reponsestation);
         $rootScope.lieu.station = arg;
         $state.go('app.single');
       },
@@ -91,6 +103,7 @@ angular.module('starter.controllers', [])
 .controller('LigneCtrl', function($scope,$rootScope,$state) {
 
 
+
   $scope.click= function(arg){
     $rootScope.lieu.ligne = arg;
     $state.go('app.station');
@@ -98,7 +111,7 @@ angular.module('starter.controllers', [])
 })
 .controller('StationCtrl', function($scope,$rootScope,$state) {
     $scope.click= function(arg){
-    $scope.lieu.station = arg;
+    $rootScope.lieu.station = arg;
 
     //Query a Parse.
     var Object = Parse.Object.extend("anecdote");
@@ -108,10 +121,11 @@ angular.module('starter.controllers', [])
       success : function(results){
 
           for (var i = 0; i < results.length; i++){
-            $rootScope.reponse[i] = results[i];
-            $rootScope.reponse[i].date = {};
-            $rootScope.reponse[i].date = $rootScope.reponse[i].createdAt.toString().split(/\s+/);
+            $rootScope.reponsestation[i] = results[i];
+            $rootScope.reponsestation[i].date = {};
+            $rootScope.reponsestation[i].date = $rootScope.reponsestation[i].createdAt.toString().split(/\s+/);
           }
+
 
         $state.go('app.single');
       },
@@ -126,11 +140,5 @@ angular.module('starter.controllers', [])
 
 .controller('PlaylistCtrl', function($scope, $stateParams,$rootScope) {
 
-  $scope.votes = function(arg,arg1){
-    if(arg==='up'){
 
-    }else if(arg==='down'){
-
-    }
-  };
 });
