@@ -1,7 +1,8 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout,$rootScope) {
-  // Form data for the login modal
+.controller('AppCtrl', function($scope, $ionicModal, $timeout,$rootScope,$http) {
+  Parse.initialize("pWm8epqgF2aiTmPqM0qeGm1aPHF73wW5jCe1LXfC", "6ZkBvTc8jvqts6UVHIAPSFgYL8qtrugUCcF2A00f");
+
   $rootScope.votes = function(arg,arg1,arg2){
     if(arg==='up'){
       var Anecdote = Parse.Object.extend("anecdote");
@@ -32,7 +33,47 @@ angular.module('starter.controllers', [])
       alert("A voté !");
     }
   };
+  $rootScope.parse= function(){
+    var Object = Parse.Object.extend("anecdote");
+      var query = new Parse.Query(Object);
+      query.descending("createdAt");
+      query.find({
+        success : function(results){
+            for (var i = 0; i < results.length; i++){
+              $rootScope.reponsehome[i] = results[i];
+              $rootScope.reponsehome[i].date = {};
+              $rootScope.reponsehome[i].date = $rootScope.reponsehome[i].createdAt.toString().split(/\s+/);
+            }
+        },
+        error: function(error) {
+          alert('error');
+        }
+      });
+  }
 
+  $rootScope.parse();
+  $http.get('js/stations.json').success(function(data) {
+   $rootScope.stations = data;
+  });
+  //Query a Parse.
+  var Object = Parse.Object.extend("anecdote");
+  var query = new Parse.Query(Object);
+  query.descending("point");
+  query.find({
+    success : function(results){
+        for (var i = 0; i < results.length; i++){
+          $rootScope.reponsetop[i] = results[i];
+          $rootScope.reponsetop[i].date = {};
+          $rootScope.reponsetop[i].date = $rootScope.reponsetop[i].createdAt.toString().split(/\s+/);
+        }
+    },
+    error: function(error) {
+      alert('error');
+    }
+  });
+
+
+  // Form data for the login modal
   $scope.loginData = {};
 
 
@@ -107,7 +148,6 @@ angular.module('starter.controllers', [])
           for (var i = 0; i < results.length; i++){
             $rootScope.reponsestation[i] = results[i];
           }
-        console.log($rootScope.reponsestation);
         $rootScope.lieu.station = arg;
         $state.go('app.single');
       },
@@ -123,18 +163,17 @@ angular.module('starter.controllers', [])
 
 
 })
+.controller('TopCtrl', function($scope, $stateParams,$rootScope,$http) {
+})
 
 .controller('LigneCtrl', function($scope,$rootScope,$state) {
-
-
-
   $scope.click= function(arg){
     $rootScope.lieu.ligne = arg;
     $state.go('app.station');
   }
 })
 .controller('StationCtrl', function($scope,$rootScope,$state) {
-    
+
     $scope.click= function(arg){
     $rootScope.lieu.station = arg;
 
@@ -162,8 +201,6 @@ angular.module('starter.controllers', [])
   }
 
 })
-
 .controller('PlaylistCtrl', function($scope, $stateParams,$rootScope) {
-
 
 });

@@ -1,0 +1,26 @@
+<ion-view class="nav" view-title="Top">
+  <ion-content class="nav">
+
+      <div class="list card" ng-repeat="item in reponsetop" >
+        <div class="item item-avatar" ng-click="click(item.attributes.station)"  >
+          <div > Metro {{item.attributes.station}}
+          {{item.attributes.ligne}}
+          </div>
+        </div>
+        <div class="item item-body">
+          <h2>{{item.attributes.commentaires}}</h2>
+          <p> par {{item.attributes.user_id}}</p>
+          <i class="date"><i style="color: red;">envoyé </i> <i style="color: blue;"> à {{item.date[4]}}  </i>, {{item.date[2]}} {{item.date[1]}} {{item.date[3]}}</i>
+          <div class="clear"></div>
+          <p>
+            <a ng-click="votes('up',item.id,item.attributes.point)" class="subdued left ion-thumbsup">  Je valide</a>
+            <a ng-click="votes('down',item.id,itemattributes.points)" class="subdued left ion-thumbsdown"> Pas top </a>
+            <i style="float: right;">{{item.attributes.point}} points</i>
+            <i class="clear"></i>
+          </p>
+        </div>
+      </div>
+      <div class="fin">...</div>
+
+  </ion-content>
+</ion-view>

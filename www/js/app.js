@@ -8,11 +8,13 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
 .run(function($ionicPlatform,$http,$rootScope) {
   $ionicPlatform.ready(function() {
-    Parse.initialize("pWm8epqgF2aiTmPqM0qeGm1aPHF73wW5jCe1LXfC", "6ZkBvTc8jvqts6UVHIAPSFgYL8qtrugUCcF2A00f");
+
     $rootScope.stations = {};
     $rootScope.reponse= [];
     $rootScope.reponsehome= [];
     $rootScope.reponsestation = [];
+    $rootScope.reponsetop = [];
+
 
     $rootScope.lieu = {};
     $rootScope.ligne = [
@@ -41,34 +43,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       { title: 'Ligdzezne 5', id: 5 },
       { title: 'Ligdzezene 6', id: 6 }
     ];
-
-    $rootScope.parse= function(){
-      var Object = Parse.Object.extend("anecdote");
-        var query = new Parse.Query(Object);
-        query.descending("createdAt");
-        query.find({
-          success : function(results){
-              for (var i = 0; i < results.length; i++){
-                $rootScope.reponsehome[i] = results[i];
-                $rootScope.reponsehome[i].date = {};
-                $rootScope.reponsehome[i].date = $rootScope.reponsehome[i].createdAt.toString().split(/\s+/);
-              }
-              
-
-          },
-          error: function(error) {
-            alert('error');
-          }
-        });
-    }
-
-    $rootScope.parse();
-    $http.get('js/stations.json').success(function(data) {
-     $rootScope.stations = data;
-    });
-
-
-
 
 
 
@@ -120,6 +94,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         'menuContent': {
           templateUrl: "templates/ligne.html",
           controller: 'LigneCtrl'
+        }
+      }
+    })
+    .state('app.top', {
+      url: "/top",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/top.html",
+          controller: 'TopCtrl'
         }
       }
     })
