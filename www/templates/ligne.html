@@ -1,10 +1,13 @@
 <ion-view class="nav" view-title="Ligne">
   <ion-content class="nav">
     <ion-list>
-      <ion-item ng-repeat="item in ligne" ng-click="click(item.id)" style="text-align:  center; margin: 0 auto;">
-        Ligne  <img src="/img/ligne/{{item.id}}.gif" alt="ligne"  ></img>
+      <ion-item ng-repeat="item in ligne" ng-click="click(item.id)" style="line-height: 63px; text-align: center;" >
+
+          <span class="ligne">Ligne</span ><span class="img-ligne"><img  ng-src="img/ligne/{{item.id}}.gif" alt="{{item.id}}"  ></img></span>
+
+        <i class="fleche"><i class="ion-chevron-right"></i></i><i class="clear"></i>
       </ion-item>
-      <div class="fin">Fin</div>
+      <div class="fin">deFin</div>
     </ion-list>
   </ion-content>
 </ion-view>

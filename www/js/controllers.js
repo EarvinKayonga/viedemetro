@@ -3,6 +3,7 @@ angular.module('starter.controllers', [])
 .controller('AppCtrl', function($scope, $ionicModal, $timeout,$rootScope,$http) {
   Parse.initialize("pWm8epqgF2aiTmPqM0qeGm1aPHF73wW5jCe1LXfC", "6ZkBvTc8jvqts6UVHIAPSFgYL8qtrugUCcF2A00f");
 
+
   $rootScope.votes = function(arg,arg1,arg2){
     if(arg==='up'){
       var Anecdote = Parse.Object.extend("anecdote");
@@ -34,10 +35,10 @@ angular.module('starter.controllers', [])
     }
   };
   $rootScope.parse= function(){
-    var Object = Parse.Object.extend("anecdote");
-      var query = new Parse.Query(Object);
-      query.descending("createdAt");
-      query.find({
+    var trelli = Parse.Object.extend("anecdote");
+      var lili = new Parse.Query(trelli);
+      lili.descending("createdAt");
+      lili.find({
         success : function(results){
             for (var i = 0; i < results.length; i++){
               $rootScope.reponsehome[i] = results[i];
@@ -46,31 +47,28 @@ angular.module('starter.controllers', [])
             }
         },
         error: function(error) {
-          alert('error');
+          alert('Connexion impossible');
         }
       });
   }
+  $rootScope.top = function(){
+    var trelo = Parse.Object.extend("anecdote");
+    var toto = new Parse.Query(trelo);
+    toto.descending("point");
+    toto.find({
+      success : function(results){
+          for (var i = 0; i < results.length; i++){
+            $rootScope.reponsetop[i] = results[i];
+            $rootScope.reponsetop[i].date = {};
+            $rootScope.reponsetop[i].date = $rootScope.reponsetop[i].createdAt.toString().split(/\s+/);
+          }
+      },
+      error: function(error) {
 
-  $rootScope.parse();
-  $http.get('js/stations.json').success(function(data) {
-   $rootScope.stations = data;
-  });
-  //Query a Parse.
-  var Object = Parse.Object.extend("anecdote");
-  var query = new Parse.Query(Object);
-  query.descending("point");
-  query.find({
-    success : function(results){
-        for (var i = 0; i < results.length; i++){
-          $rootScope.reponsetop[i] = results[i];
-          $rootScope.reponsetop[i].date = {};
-          $rootScope.reponsetop[i].date = $rootScope.reponsetop[i].createdAt.toString().split(/\s+/);
-        }
-    },
-    error: function(error) {
-      alert('error');
-    }
-  });
+      }
+    });
+  }
+
 
 
   // Form data for the login modal
@@ -114,7 +112,7 @@ angular.module('starter.controllers', [])
         error: function(anecdote, error) {
           // Execute any logic that should take place if the save fails.
           // error is a Parse.Error with an error code and message.
-          alert('Erreur: ' + error.message);
+          alert('Connexion impossible');
         }
       });
     }else{
@@ -127,7 +125,10 @@ angular.module('starter.controllers', [])
     }, 500);
   };
 })
+
 .controller('HomeCtrl',function($http,$scope,$rootScope,$state,$ionicModal){
+
+  $rootScope.parse();
 
 
 
@@ -137,8 +138,8 @@ angular.module('starter.controllers', [])
 
 
     //Query a Parse.
-    var Object = Parse.Object.extend("anecdote");
-    var query = new Parse.Query(Object);
+    var caca = Parse.Object.extend("anecdote");
+    var query = new Parse.Query(caca);
 
 
     query.equalTo("station",arg);
@@ -146,13 +147,17 @@ angular.module('starter.controllers', [])
       success : function(results){
 
           for (var i = 0; i < results.length; i++){
-            $rootScope.reponsestation[i] = results[i];
+
+              $rootScope.reponsestation[i] = results[i];
+              $rootScope.reponsestation[i].date = {};
+              $rootScope.reponsestation[i].date = $rootScope.reponsestation[i].createdAt.toString().split(/\s+/);
           }
+
         $rootScope.lieu.station = arg;
         $state.go('app.single');
       },
       error: function(error) {
-        alert('error');
+
       }
     });
 
@@ -164,11 +169,14 @@ angular.module('starter.controllers', [])
 
 })
 .controller('TopCtrl', function($scope, $stateParams,$rootScope,$http) {
+
 })
 
 .controller('LigneCtrl', function($scope,$rootScope,$state) {
+
   $scope.click= function(arg){
     $rootScope.lieu.ligne = arg;
+    //$rootScope.station = ;
     $state.go('app.station');
   }
 })
@@ -189,12 +197,12 @@ angular.module('starter.controllers', [])
             $rootScope.reponsestation[i].date = {};
             $rootScope.reponsestation[i].date = $rootScope.reponsestation[i].createdAt.toString().split(/\s+/);
           }
-
+          console.log($rootScope.reponsestation);
 
         $state.go('app.single');
       },
       error: function(error) {
-        alert('error');
+
       }
     });
 

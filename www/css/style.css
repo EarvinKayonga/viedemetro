@@ -1,7 +1,14 @@
 /* Empty. Add your own CSS if you like */
+*{
+  font-family: Font;
+}
 @font-face {
     font-family: Font;
-    src: url(DKAmericanGrunge.ttf);
+    src: url(parisine-regular.otf);
+}
+@font-face {
+    font-family: anecdote;
+    src: url(lacuna.ttf);
 }
 #menu{
   color: white;
@@ -19,7 +26,7 @@
 .date{
   font-size: xx-small !important;
   text-align: right;
-  color: orange !important;
+  color: #545454 !important;
   float: right;
 }
 .clear{
@@ -29,9 +36,7 @@
   margin-left: 35% !important;
   padding: 2%;
 }
-.jaune{
-  background-color: orange;
-}
+
 .fin{
   color: black !important;
   text-align: center;
@@ -41,4 +46,27 @@
   font-size: 150%;
   height: 40px;
   margin: 0 auto;
+}
+
+.ligne{
+  font-size: 19px;
+  color: #3f3f3f;
+  margin-top: -7px;
+  padding-left:  -10px;
+  position:absolute;
+}
+.img-ligne{
+  padding-left: 54px;
+}
+#anecdote{
+  font-family: anecdote;
+  font-size: 30px;
+}
+.fleche{
+  float: right;
+}
+.title{
+  font-family:Font;
+  font-size:50px;
+  color: white;
 }

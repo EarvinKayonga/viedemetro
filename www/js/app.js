@@ -8,12 +8,17 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
 .run(function($ionicPlatform,$http,$rootScope) {
   $ionicPlatform.ready(function() {
-
+    Parse.initialize("pWm8epqgF2aiTmPqM0qeGm1aPHF73wW5jCe1LXfC", "6ZkBvTc8jvqts6UVHIAPSFgYL8qtrugUCcF2A00f");
     $rootScope.stations = {};
     $rootScope.reponse= [];
     $rootScope.reponsehome= [];
     $rootScope.reponsestation = [];
     $rootScope.reponsetop = [];
+    $http.get('js/stations.json').success(function(data) {
+     $rootScope.stations = data;
+    });
+    $rootScope.top();
+    $rootScope.parse();
 
 
     $rootScope.lieu = {};
@@ -88,6 +93,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     }
   })
+  .state('app.top', {
+    url: "/top",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/top.html",
+        controller: 'TopCtrl'
+      }
+    }
+  })
     .state('app.ligne', {
       url: "/ligne",
       views: {
@@ -97,15 +111,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
-    .state('app.top', {
-      url: "/top",
-      views: {
-        'menuContent': {
-          templateUrl: "templates/top.html",
-          controller: 'TopCtrl'
-        }
-      }
-    })
+
 
   .state('app.single', {
     url: "/playlist",
