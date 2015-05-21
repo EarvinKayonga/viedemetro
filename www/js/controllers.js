@@ -6,6 +6,7 @@
     Parse.initialize("pWm8epqgF2aiTmPqM0qeGm1aPHF73wW5jCe1LXfC", "6ZkBvTc8jvqts6UVHIAPSFgYL8qtrugUCcF2A00f");
 
 
+
     $rootScope.votes = function(arg,arg1,arg2){
       if(arg==='up'){
         var Anecdote = Parse.Object.extend("anecdote");
@@ -20,7 +21,7 @@
             anecdote.save();
           }
         });
-        alert("Le vote est passé!");
+
 
       }else if(arg==='down'){
         var Anecdote = Parse.Object.extend("anecdote");
@@ -33,7 +34,7 @@
             anecdote.save();
           }
         });
-        alert("Le vote est passé !");
+
       }
     };
     $rootScope.parse= function(){
@@ -52,6 +53,7 @@
             alert('Connexion impossible');
           }
         });
+
     }
     $rootScope.top = function(){
       var trelo = Parse.Object.extend("anecdote");
@@ -71,7 +73,7 @@
       });
     }
 
-
+    $rootScope.parse();
 
     // Form data for the login modal
     $scope.loginData = {};
@@ -97,10 +99,16 @@
 
     // Perform the login action when the user submits the login form
     $scope.do = function(text, metro) {
-        if(text!=="" ){
+
+      if(!text){
+        alert("Il manque l'anecdote");
+      }else if (!metro) {
+        alert("Il manque un metro");
+      }else{
         var Anecdote = Parse.Object.extend("anecdote");
         var anecdote = new Anecdote();
-
+        metro = metro.toLowerCase();
+        metro = metro.charAt(0).toUpperCase() + metro.substr(1);
         anecdote.set("commentaires", text);
         anecdote.set("station", metro);
         anecdote.set("point", 1);
@@ -108,8 +116,7 @@
 
         anecdote.save(null, {
           success: function(anecdote) {
-            // Execute any logic that should take place after the object is saved.
-            alert('C\'est envoyé !');
+
           },
           error: function(anecdote, error) {
             // Execute any logic that should take place if the save fails.
@@ -117,8 +124,6 @@
             alert('Connexion impossible');
           }
         });
-      }else{
-        alert("Il manque un metro et/ou du texte");
       }
       // Simulate a login delay. Remove this and replace with your login
       // code if using a login system
@@ -129,9 +134,6 @@
   })
 
   .controller('HomeCtrl',function($http,$scope,$rootScope,$state,$ionicModal){
-
-    $rootScope.parse();
-
 
 
     $scope.click= function(arg){
@@ -164,9 +166,6 @@
       });
 
     }
-
-
-
 
 
   })
@@ -215,7 +214,7 @@
   })
   .controller('StationCtrl', function($scope,$rootScope,$state) {
       $scope.currentLigne = $rootScope.lieu.ligne;
-      
+
 
       $scope.click= function(arg){
       $rootScope.lieu.station = arg;
@@ -245,6 +244,12 @@
 
   })
   .controller('PlaylistCtrl', function($scope, $stateParams,$rootScope) {
+
+  })
+  .controller('AboutCtrl',function($http,$scope,$rootScope,$state,$ionicModal){
+
+
+
 
   });
 

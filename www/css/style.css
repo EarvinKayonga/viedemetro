@@ -27,7 +27,6 @@
 }
 .date{
   font-size: 75% !important;
-  text-align: right;
   color: #545454 !important;
   float: right;
 
@@ -36,30 +35,25 @@
   clear: both;
 }
 .select{
-  margin-left: 35% !important;
-  padding: 2%;
+  width: 60%;
 }
 
 .fin{
   color: black !important;
   text-align: center;
   font-family: Font Verdana;
-  background-color: grey;
-  width: 80%;
-  font-size: 150%;
+  background-color: #fafafa;
+  width: 90%;
+  font-size: 140%;
   height: 40px;
   margin: 0 auto;
 }
 
 .ligne{
-  font-size: 19px;
-  color: #3f3f3f;
-  margin-top: -7px;
-  padding-left:  -10px;
-  position:absolute;
+
 }
 .img-ligne{
-  padding-left: 54px;
+  
 }
 #anecdote{
   font-family: anecdote;
@@ -72,4 +66,7 @@
   font-family:Font;
   font-size:50px;
   color: white;
+}
+.ligne{
+  white-space: normal;
 }

@@ -4,15 +4,14 @@
       <div class="item item-body" >
         <h2 id="anecdote">{{item.attributes.commentaires}}</h2>
         <p> par {{item.attributes.user_id}}</p>
-        <i class="date">{{item.date[2]}} {{item.date[1]}} {{item.date[3]}}</i>
-        <i class="date">envoyé  <i > à {{item.date[4]}}  </i>, {{item.date[2]}} {{item.date[1]}} {{item.date[3]}}</i>
+        <i class="date">envoyé le {{item.date[2]}}  {{item.date[1] }} {{item.date[3]}}  à {{item.date[4]}}  </i>
         <div class="clear"></div>
       </div>
       <div class="item item-body">
         <p>
           <a ng-click="votes('up',item.id,item.attributes.point)" class="subdued left ion-thumbsup">  Je valide</a>
           <a ng-click="votes('down',item.attributes.id)" class="subdued left ion-thumbsdown"> Pas top </a>
-          <i style="float: right;">{{item.attributes.point}} points</i>
+          <i style="float: right; font-size: 85%;">{{item.attributes.point}} points</i>
           <i class="clear"></i>
         </p>
       </div>
