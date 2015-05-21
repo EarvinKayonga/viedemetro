@@ -1,7 +1,7 @@
 <ion-view class="nav" view-title="Stations">
   <ion-content class="nav">
     <ion-list>
-      <ion-item ng-repeat="item in station" ng-click="click(item.title)">
+      <ion-item ng-repeat="item in station | filter: { id: currentLigne} : true" ng-click="click(item.title)">
         {{item.title}}
       </ion-item>
     </ion-list>

@@ -1,7 +1,7 @@
 /* Empty. Add your own CSS if you like */
 *{
   font-family: Font;
-  
+
 
 }
 @font-face {
@@ -26,10 +26,11 @@
   height : 10% !important;
 }
 .date{
-  font-size: xx-small !important;
+  font-size: 75% !important;
   text-align: right;
   color: #545454 !important;
   float: right;
+
 }
 .clear{
   clear: both;
@@ -62,7 +63,7 @@
 }
 #anecdote{
   font-family: anecdote;
-  font-size: 30px;
+  font-size: 25px;
 }
 .fleche{
   float: right;

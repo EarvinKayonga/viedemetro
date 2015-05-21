@@ -8,18 +8,22 @@
   <ion-content >
     <form name="anec" ng-submit="do(text,selectedItem)" ng-model="text"  style="height: 100%">
       <div >
+        <label class="font">
+          Station
+        </label>
         <select class="select" ng-model="selectedItem" required>
           <option ng-repeat="item in stations.features |orderBy:'-properties.STATION'" value="{{item.properties.STATION }}">{{item.properties.STATION }}</option>
         </select>
 
       </div>
-      <div class="list" >
-        <label class="item item-input">
-          <textarea name="anecdote" ng-model="text" rows="10" placeholder="Racontez" style="margin: 6%;" required></textarea>
+      <div class="list">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Raconte ton anecdote</span>
+          <input type="text" ng-model="text" name="anecdote" placeholder="Raconte ton anecdote">
         </label>
 
         <button class="button button-block button-positive ion-ios-arrow-thin-up title" type="submit"> Envoyer</button>
       </div>
     </form>
   </ion-content>
-</ion-modal-view>
+</ion-modal-view>e
