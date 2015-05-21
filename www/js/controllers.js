@@ -18,7 +18,7 @@ angular.module('starter.controllers', [])
           anecdote.save();
         }
       });
-      alert("A voté !");
+      alert("Le vote est passé!");
 
     }else if(arg==='down'){
       var Anecdote = Parse.Object.extend("anecdote");
@@ -31,7 +31,7 @@ angular.module('starter.controllers', [])
           anecdote.save();
         }
       });
-      alert("A voté !");
+      alert("Le vote est passé !");
     }
   };
   $rootScope.parse= function(){
@@ -168,7 +168,38 @@ angular.module('starter.controllers', [])
 
 
 })
-.controller('TopCtrl', function($scope, $stateParams,$rootScope,$http) {
+.controller('TopCtrl', function($scope, $stateParams,$rootScope,$http,$state) {
+
+    $scope.click= function(arg){
+      
+      $scope.lieu.station = arg;
+
+
+      //Query a Parse.
+      var caca = Parse.Object.extend("anecdote");
+      var query = new Parse.Query(caca);
+
+
+      query.equalTo("station",arg);
+      query.find({
+        success : function(results){
+
+            for (var i = 0; i < results.length; i++){
+
+                $rootScope.reponsestation[i] = results[i];
+                $rootScope.reponsestation[i].date = {};
+                $rootScope.reponsestation[i].date = $rootScope.reponsestation[i].createdAt.toString().split(/\s+/);
+            }
+
+          $rootScope.lieu.station = arg;
+          $state.go('app.single');
+        },
+        error: function(error) {
+
+        }
+      });
+
+    }
 
 })
 

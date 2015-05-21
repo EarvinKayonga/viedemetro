@@ -2,14 +2,14 @@
   <ion-header-bar class="nav" >
     <h1 class="title">L'anecdote</h1>
     <div class="buttons">
-      <button class="button button-clear " ng-click="close()">Close</button>
+      <button class="button button-clear" id="anecdote" ng-click="close()" style="color: black; background:#ff0000;">Annuler</button>
     </div>
   </ion-header-bar>
   <ion-content >
     <form name="anec" ng-submit="do(text,selectedItem)" ng-model="text"  style="height: 100%">
       <div >
         <select class="select" ng-model="selectedItem" required>
-          <option ng-repeat="item in stations.features | orderBy:'-properties.STATION'" value="{{item.properties.STATION }}">{{item.properties.STATION }}</option>
+          <option ng-repeat="item in stations.features |orderBy:'-properties.STATION'" value="{{item.properties.STATION }}">{{item.properties.STATION }}</option>
         </select>
 
       </div>
