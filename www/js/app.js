@@ -19,8 +19,10 @@
       $http.get('js/stations.json').success(function(data) {
        $rootScope.stations = data;
       });
-      $rootScope.top();
-      $rootScope.parse();
+
+      
+
+
 
 
       $rootScope.lieu = {};

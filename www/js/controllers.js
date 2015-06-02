@@ -6,7 +6,6 @@
     Parse.initialize("pWm8epqgF2aiTmPqM0qeGm1aPHF73wW5jCe1LXfC", "6ZkBvTc8jvqts6UVHIAPSFgYL8qtrugUCcF2A00f");
 
 
-
     $rootScope.votes = function(arg,arg1,arg2){
       if(arg==='up'){
         var Anecdote = Parse.Object.extend("anecdote");
@@ -73,6 +72,35 @@
       });
     }
 
+
+        var result =[];
+        result = (function(){
+          var base=[];
+          var trelo = Parse.Object.extend("anecdote");
+          var toto = new Parse.Query(trelo);
+          toto.descending("createdAt");
+          toto.find({
+            success : function(results){
+                for (var i = 0; i < results.length; i++){
+                  base[i] = results[i];
+                  base[i].date = {};
+                  base[i].date = base[i].createdAt.toString().split(/\s+/);
+                }
+                for (var i = 0; i < results.length; i++){
+                  $rootScope.reponsehome[i] = results[i];
+                  $rootScope.reponsehome[i].date = {};
+                  $rootScope.reponsehome[i].date = $rootScope.reponsehome[i].createdAt.toString().split(/\s+/);
+                }
+            },
+            error: function(error) {
+
+            }
+          });
+
+        }());
+
+
+
     $rootScope.parse();
 
     // Form data for the login modal
@@ -86,7 +114,7 @@
       $scope.modal = modal;
 
     });
-  
+
 
     // Triggered in the login modal to close it
     $scope.close = function() {
