@@ -25,15 +25,18 @@
         <h2 id="anecdote">{{item.attributes.commentaires}}</h2>
       </div>
       <div class="item item-image" style="height: 10% !important;">
-        <div style="float: left; text-align: left; font-size: 12px; ">
-          <p > par {{item.attributes.user_id}}</p>
-          <p style="font-size: 9px;">envoyé  <i > à {{item.date[4]}}  </i>, {{item.date[2]}} {{item.date[1]}} {{item.date[3]}}</p>
+        <div class="cont">
+          <div style="float: left; text-align: left; font-size: 12px; ">
+            <p > par {{item.attributes.user_id}}</p>
+            <p style="font-size: 9px;">envoyé  <i > à {{item.date[4]}}  </i>, {{item.date[2]}} {{item.date[1]}} {{item.date[3]}}</p>
 
-        </div>
-        <div class="ligne"> Metro {{item.attributes.station}}
-        {{item.attributes.ligne}}
-        </div>
-        <i class="clear"></i>
+          </div>
+
+          <div class="ligne"> Metro {{item.attributes.station}}
+          {{item.attributes.ligne}}
+          </div>
+          <i class="clear"></i>
+          </div>
       </div>
       <div  class="subsection">
         <a ng-click="votes('up',item.id,item.attributes.point)" class="subdued left ion-thumbsup" style="margin: 4%;">  Je valide</a>
