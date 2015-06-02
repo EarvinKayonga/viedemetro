@@ -1,14 +1,12 @@
 <ion-view view-title="Accueil">
-  <ion-content>
-    <div class="list card" ng-repeat="item in reponsehome" >
-      <div class="item item-avatar" ng-click="click(item.attributes.station)"  >
-        <div class="ligne"> Metro {{item.attributes.station}}
-        {{item.attributes.ligne}}
-        </div>
+  <ion-content style="background-color: #FEFEFE;">
+  <!--  <div class="list card" ng-repeat="item in reponsehome" >
+     <div class="item item-avatar" ng-click="click(item.attributes.station)"  >
+
 
       </div>
       <div class="item item-body"  >
-        <h2 id="anecdote">{{item.attributes.commentaires}}</h2>
+
         <p> par {{item.attributes.user_id}}</p>
         <i class="date">envoyé  <i > à {{item.date[4]}}  </i>, {{item.date[2]}} {{item.date[1]}} {{item.date[3]}}</i>
         <div class="clear"></div>
@@ -18,6 +16,30 @@
           <i style="float: right; font-size: 85%;">{{item.attributes.point}} points</i>
           <i class="clear"></i>
         </p>
+      </div>
+
+    </div>-->
+
+    <div class="list card" ng-repeat="item in reponsehome" ng-click="click(item.attributes.station)">
+      <div class="item item-body">
+        <h2 id="anecdote">{{item.attributes.commentaires}}</h2>
+      </div>
+      <div class="item item-image" style="height: 10% !important;">
+        <div style="float: left; text-align: left; font-size: 12px; ">
+          <p > par {{item.attributes.user_id}}</p>
+          <p style="font-size: 9px;">envoyé  <i > à {{item.date[4]}}  </i>, {{item.date[2]}} {{item.date[1]}} {{item.date[3]}}</p>
+
+        </div>
+        <div class="ligne"> Metro {{item.attributes.station}}
+        {{item.attributes.ligne}}
+        </div>
+        <i class="clear"></i>
+      </div>
+      <div  class="subsection">
+        <a ng-click="votes('up',item.id,item.attributes.point)" class="subdued left ion-thumbsup" style="margin: 4%;">  Je valide</a>
+        <a ng-click="votes('down',item.id,itemattributes.points)" class="subdued left ion-thumbsdown" style="margin: 4%; "> Pas top </a>
+        <i style="float: right; font-size: 88%; color:grey;right: 10px;">{{item.attributes.point}} points</i>
+        <i class="clear"></i>
       </div>
 
     </div>

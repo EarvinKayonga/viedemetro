@@ -86,11 +86,13 @@
       $scope.modal = modal;
 
     });
+  
 
     // Triggered in the login modal to close it
     $scope.close = function() {
       $scope.modal.hide();
     };
+
 
     // Open the login modal
     $scope.open = function() {
@@ -98,12 +100,16 @@
     };
 
     // Perform the login action when the user submits the login form
-    $scope.do = function(text, metro) {
+    $scope.do = function(text, metro,mail,name) {
 
       if(!text){
         alert("Il manque l'anecdote");
       }else if (!metro) {
         alert("Il manque un metro");
+      }else if (!name) {
+        alert("Il manque un identifiant");
+      }else if (!mail) {
+        alert("Il manque un mail");
       }else{
         var Anecdote = Parse.Object.extend("anecdote");
         var anecdote = new Anecdote();
@@ -112,10 +118,29 @@
         anecdote.set("commentaires", text);
         anecdote.set("station", metro);
         anecdote.set("point", 1);
-        anecdote.set("user_id", "Earvin");
+        anecdote.set("user_id", name);
 
         anecdote.save(null, {
           success: function(anecdote) {
+            //Password Generation
+            var code ="";
+            var charset  ="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-!";
+            for ( var i = 0, n = charset.length;i <8; i++){
+              code += charset.charAt(Math.floor(Math.random()*n)) ;
+            }
+            // User Registration
+            var user = new Parse.User();
+            user.set("username", name);
+            user.set("email", mail);
+            user.set("password",code)
+            user.signUp(null,{
+              success: function(user){
+                alert("Posté!");
+
+            },
+            error: function(user, error){
+
+            }});
 
           },
           error: function(anecdote, error) {
@@ -134,7 +159,6 @@
   })
 
   .controller('HomeCtrl',function($http,$scope,$rootScope,$state,$ionicModal){
-
 
     $scope.click= function(arg){
 

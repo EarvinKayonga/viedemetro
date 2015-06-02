@@ -1,8 +1,6 @@
 /* Empty. Add your own CSS if you like */
 *{
   font-family: Font;
-
-
 }
 @font-face {
     font-family: Font;
@@ -50,14 +48,16 @@
 }
 
 .ligne{
-
+  float: right !important;
+  right: 3px;
+  font-size: 13px;
 }
 .img-ligne{
-  
+
 }
 #anecdote{
   font-family: anecdote;
-  font-size: 25px;
+  font-size: 19px;
 }
 .fleche{
   float: right;
@@ -66,7 +66,13 @@
   font-family:Font;
   font-size:50px;
   color: white;
+  
 }
 .ligne{
   white-space: normal;
+}
+.subsection{
+  height: 7%;
+  vertical-align:middle;
+  padding: 5%;"
 }
