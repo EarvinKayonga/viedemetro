@@ -73,31 +73,7 @@
     }
 
 
-        var result =[];
-        result = (function(){
-          var base=[];
-          var trelo = Parse.Object.extend("anecdote");
-          var toto = new Parse.Query(trelo);
-          toto.descending("createdAt");
-          toto.find({
-            success : function(results){
-                for (var i = 0; i < results.length; i++){
-                  base[i] = results[i];
-                  base[i].date = {};
-                  base[i].date = base[i].createdAt.toString().split(/\s+/);
-                }
-                for (var i = 0; i < results.length; i++){
-                  $rootScope.reponsehome[i] = results[i];
-                  $rootScope.reponsehome[i].date = {};
-                  $rootScope.reponsehome[i].date = $rootScope.reponsehome[i].createdAt.toString().split(/\s+/);
-                }
-            },
-            error: function(error) {
 
-            }
-          });
-
-        }());
 
 
 
@@ -128,16 +104,15 @@
     };
 
     // Perform the login action when the user submits the login form
-    $scope.do = function(text, metro,mail,name) {
-
-      if(!text){
+    $scope.do = function(text, metro,name) {
+      console.log(mail.length == 0);
+      if(!text|| text.length == 0){
         alert("Il manque l'anecdote");
-      }else if (!metro) {
+      }else if (!metro || metro.length == 0) {
         alert("Il manque un metro");
-      }else if (!name) {
+      }else if (!name|| name.length == 0) {
         alert("Il manque un identifiant");
-      }else if (!mail) {
-        alert("Il manque un mail");
+
       }else{
         var Anecdote = Parse.Object.extend("anecdote");
         var anecdote = new Anecdote();
@@ -159,8 +134,7 @@
             // User Registration
             var user = new Parse.User();
             user.set("username", name);
-            user.set("email", mail);
-            user.set("password",code)
+            user.set("password",code);
             user.signUp(null,{
               success: function(user){
                 alert("Posté!");
