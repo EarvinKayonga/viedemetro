@@ -55,6 +55,10 @@
 .img-ligne{
 
 }
+.cont{
+  width: 85%;
+  margin: 0 auto;
+}
 #anecdote{
   font-family: anecdote;
   font-size: 19px;

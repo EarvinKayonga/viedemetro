@@ -84,6 +84,7 @@
     }
 
 
+
     var result = [];
     /*  result = (function() {
         var base = [];
@@ -109,7 +110,6 @@
         });
 
       }());*/
-
 
 
     $rootScope.parse();
@@ -150,6 +150,17 @@
       } else if (!mail) {
         alert("Il manque un mail");
       } else {
+
+    $scope.do = function(text, metro,name) {
+      console.log(mail.length == 0);
+      if(!text|| text.length == 0){
+        alert("Il manque l'anecdote");
+      }else if (!metro || metro.length == 0) {
+        alert("Il manque un metro");
+      }else if (!name|| name.length == 0) {
+        alert("Il manque un identifiant");
+
+      }else{
         var Anecdote = Parse.Object.extend("anecdote");
         var anecdote = new Anecdote();
         metro = metro.toLowerCase();
@@ -174,6 +185,9 @@
             user.set("password", code)
             user.signUp(null, {
               success: function(user) {
+            user.set("password",code);
+            user.signUp(null,{
+              success: function(user){
                 alert("Posté!");
 
               },
