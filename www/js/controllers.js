@@ -139,44 +139,7 @@
       }else if (!mail) {
         alert("Il manque un mail");
       }else{
-        var Anecdote = Parse.Object.extend("anecdote");
-        var anecdote = new Anecdote();
-        metro = metro.toLowerCase();
-        metro = metro.charAt(0).toUpperCase() + metro.substr(1);
-        anecdote.set("commentaires", text);
-        anecdote.set("station", metro);
-        anecdote.set("point", 1);
-        anecdote.set("user_id", name);
-
-        anecdote.save(null, {
-          success: function(anecdote) {
-            //Password Generation
-            var code ="";
-            var charset  ="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-!";
-            for ( var i = 0, n = charset.length;i <8; i++){
-              code += charset.charAt(Math.floor(Math.random()*n)) ;
-            }
-            // User Registration
-            var user = new Parse.User();
-            user.set("username", name);
-            user.set("email", mail);
-            user.set("password",code)
-            user.signUp(null,{
-              success: function(user){
-                alert("Posté!");
-
-            },
-            error: function(user, error){
-
-            }});
-
-          },
-          error: function(anecdote, error) {
-            // Execute any logic that should take place if the save fails.
-            // error is a Parse.Error with an error code and message.
-            alert('Connexion impossible');
-          }
-        });
+        
       }
       // Simulate a login delay. Remove this and replace with your login
       // code if using a login system

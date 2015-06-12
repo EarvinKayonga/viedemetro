@@ -10,7 +10,6 @@
 
   .run(function($ionicPlatform,$http,$rootScope) {
     $ionicPlatform.ready(function() {
-      Parse.initialize("pWm8epqgF2aiTmPqM0qeGm1aPHF73wW5jCe1LXfC", "6ZkBvTc8jvqts6UVHIAPSFgYL8qtrugUCcF2A00f");
       $rootScope.stations = {};
       $rootScope.reponse= [];
       $rootScope.reponsehome= [];
@@ -20,7 +19,7 @@
        $rootScope.stations = data;
       });
 
-      
+
 
 
 
