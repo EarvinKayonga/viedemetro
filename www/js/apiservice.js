@@ -1,5 +1,5 @@
 
-app.factory('FullStationsService', function() {
+angular.module('starter').factory('ApiService', function() {
 
 	return [
 		{ title: 'Château de Vincennes',               ligne: '1',   publish: 'no',   img_url: '' ,totalQuestion : 0 },

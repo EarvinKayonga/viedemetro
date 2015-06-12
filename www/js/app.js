@@ -8,7 +8,7 @@
   // 'starter.controllers' is found in controllers.js
   angular.module('starter', ['ionic', 'starter.controllers'])
 
-  .run(function($ionicPlatform,$http,$rootScope) {
+  .run(function($ionicPlatform,$http,$rootScope, DatabaseService) {
     $ionicPlatform.ready(function() {
       $rootScope.stations = {};
       $rootScope.reponse= [];
